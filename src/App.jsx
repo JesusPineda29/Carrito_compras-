@@ -11,7 +11,7 @@ function App() {
 
   const [data, setData] = useState(db)
   const [cart, setCart] = useState([])
-  
+
 
   function addToCart(item) {
     const itemExist = cart.findIndex((guitar) => guitar.id === item.id)
@@ -25,11 +25,15 @@ function App() {
     }
   }
 
+  function removeFromCart(id) {
+    setCart(prevCart => prevCart.filter(guitar => guitar.id !== id))
+  }
 
   return (
     <>
     <Header
       cart={cart}
+      removeFromCart={removeFromCart}
     />
 
     <main className="container-xl mt-5">
